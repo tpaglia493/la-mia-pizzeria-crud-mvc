@@ -1,6 +1,5 @@
-﻿@{
-    Layout = "_MyLayout";
-}    
+﻿
+@model List<PizzaModel>
 <div class="container-fluid bg-elegant">
     <div class="row">
         <div class="col-md-6"></div>
@@ -38,20 +37,21 @@
 <div class="bg-contrast">
     <div class="container" >
         <div class="row">
-
-            <div class="col-12 col-md-6 col-lg-4">            
-                <div class="card m-3 bg-elegant text-contrast">
-                    <img src="~/img/margherita.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div><h3>La Regina</h3></div>
-                        <div>Con farina macinata a pietra solo nelle notti di luna piena, lievito madre centenario, mozzarella di bufala tibetana e pomodoro.</div>
-                        <div class="card-footer fs-4">25,00 €</div>
+            @foreach (PizzaModel pizza in Model)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card m-3 bg-elegant text-contrast">
+                        <img src="@pizza.ImgSource" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div><h3>@pizza.Name</h3></div>
+                            <div></div>
+                            <div class="card-footer fs-4">@pizza.Price €</div>
+                        </div>
                     </div>
                 </div>
-               
-            </div>
+            }
 
-            <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4">
                 <div class="card m-3 bg-elegant text-contrast">
                     <img src="~/img/ananas.jpg" class="card-img-top" alt="...">
                     <div class="card-body">

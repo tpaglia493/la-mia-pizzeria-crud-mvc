@@ -1,0 +1,16 @@
+﻿@model List<PizzaModel>
+
+
+@foreach (PizzaModel pizza in Model)
+{
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card m-3 bg-elegant text-contrast">
+            <img src="@pizza.ImgSource" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div><h3>@pizza.Name</h3></div>
+                <div></div>
+                <div class="card-footer fs-4">@pizza.Price €</div>
+            </div>
+        </div>
+    </div>
+}

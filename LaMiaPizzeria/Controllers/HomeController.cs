@@ -1,4 +1,5 @@
-﻿using LaMiaPizzeria.Models;
+﻿using LaMiaPizzeria.DataBase;
+using LaMiaPizzeria.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,7 +16,11 @@ namespace LaMiaPizzeria.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            using (PizzaContext db = new())
+            {
+                List<PizzaModel> pizze = db.Pizze.ToList();
+                return View(pizze);
+            }
         }
 
         public IActionResult Privacy()
