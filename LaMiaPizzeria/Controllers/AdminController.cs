@@ -13,11 +13,10 @@ namespace LaMiaPizzeria.Controllers
 
         public IActionResult ModifyMenu()
         {
-            using(PizzaContext db = new PizzaContext()) 
-            { 
-                List<PizzaModel> pizze = new List<PizzaModel>();
-                return View("ModifyMenu",pizze);
-
+            using (PizzaContext db = new())
+            {
+                List<PizzaModel> pizze = db.Pizze.ToList();
+                return View(pizze);
             }
         }
     }
