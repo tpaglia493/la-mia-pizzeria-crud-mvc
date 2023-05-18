@@ -1,0 +1,62 @@
+﻿@model List<PizzaModel>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h3>Lista degli articoli</h3>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-12">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Immagine</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrizione</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (PizzaModel pizza in Model)
+                    {
+                      
+                        <tr>
+                            <th scope="row">@pizza.Id</th>
+                            <td><img class="img-fluid img_square" src="@pizza.ImgSource" alt="Immagine @pizza.Name"></td>
+                            <td>@pizza.Name</td>
+                            <td>@pizza.Description</td>
+                            <td>@pizza.Price</td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="@Url.Action("Details", "Article", new { id = pizza.Id })">
+                                    <svg xmlns="https://th.bing.com/th/id/R.7457a167067011b0916d1be3c7a71745?rik=riLFySbWI9go2Q&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_359924.png&ehk=k92ckjwsSI6M0EkLHMkijnKvsyMwlzIxPuVlGikpKSI%3d&risl=&pid=ImgRaw&r=0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                </a>
+                            </td>
+                        </tr>
+                      
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    @foreach (PizzaModel pizza in Model)
+    {
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card m-3 bg-elegant text-contrast">
+                <img src="@pizza.ImgSource" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div><h4>@pizza.Name</h4></div>
+                    <div>@pizza.Description</div>
+                    <div class="card-footer fs-4">@pizza.Price.ToString("n2") €</div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
