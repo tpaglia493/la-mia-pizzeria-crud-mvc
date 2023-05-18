@@ -1,5 +1,5 @@
 ﻿@model List<PizzaModel>
-
+<div class="row">
 
 @foreach (PizzaModel pizza in Model)
 {
@@ -7,10 +7,11 @@
         <div class="card m-3 bg-elegant text-contrast">
             <img src="@pizza.ImgSource" class="card-img-top" alt="...">
             <div class="card-body">
-                <div><h3>@pizza.Name</h3></div>
-                <div></div>
-                <div class="card-footer fs-4">@pizza.Price €</div>
+                <div><h4>@pizza.Name</h4></div>
+                <div>@pizza.Description</div>
+                <div class="card-footer fs-4">@pizza.Price.ToString("n2") €</div>
             </div>
         </div>
     </div>
-}
+    }
+</div>

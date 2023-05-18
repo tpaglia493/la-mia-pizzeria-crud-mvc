@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LaMiaPizzeria.Controllers
 {
-    public class PizzaController : Controller
+    public class MenuController : Controller
     {
         public IActionResult Index()
         {
@@ -14,5 +14,6 @@ namespace LaMiaPizzeria.Controllers
                 return View(pizze);
             }
         }
+        
     }
 }
