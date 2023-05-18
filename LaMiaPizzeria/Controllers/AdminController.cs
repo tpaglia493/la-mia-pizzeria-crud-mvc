@@ -1,6 +1,7 @@
 ﻿using LaMiaPizzeria.DataBase;
 using LaMiaPizzeria.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LaMiaPizzeria.Controllers
 {
@@ -18,6 +19,11 @@ namespace LaMiaPizzeria.Controllers
                 List<PizzaModel> pizze = db.Pizze.ToList();
                 return View(pizze);
             }
+        }
+
+        public IActionResult AddNewPizza()
+        {
+            return View();
         }
     }
 }
