@@ -1,6 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using LaMiaPizzeria.Models.CustomValidationAttributes;
 
 namespace LaMiaPizzeria.Models
 
@@ -24,8 +25,9 @@ namespace LaMiaPizzeria.Models
         public string ImgSource { get; set; }
 
         [Required(ErrorMessage = "Questo campo è obbligatorio!")]
-        [Range(19,250, ErrorMessage ="Non vendiamo pizze ai poveri!")]
-
+        [NoGifts]
+        [NoNegative]
+        [NoPriceForPoors]
         public float Price { get; set; }
 
         public PizzaModel() { }
