@@ -47,6 +47,44 @@ namespace LaMiaPizzeria.Controllers
             }
 
         }
+
+        public IActionResult UpdatePizza(int id)
+        {
+       
+            using (PizzaContext db = new PizzaContext())
+            {
+
+
+                PizzaModel? pizzaToModify = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+                return View("UpdatePizza", pizzaToModify);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(PizzaModel modifiedPizza, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("UpdatePizza", modifiedPizza);
+            }
+
+            using (PizzaContext db = new PizzaContext())
+            {
+                PizzaModel? pizzaToModify = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+                pizzaToModify.Description =modifiedPizza.Description;
+                pizzaToModify.Price = modifiedPizza.Price;
+                pizzaToModify.ImgSource = modifiedPizza.ImgSource;
+                pizzaToModify.Name = modifiedPizza.Name;
+
+                db.SaveChanges();
+         
+
+                return RedirectToAction("ModifyMenu");
+            }
+
+        }
     }
 }
 

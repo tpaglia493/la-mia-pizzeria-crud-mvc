@@ -6,7 +6,7 @@ namespace LaMiaPizzeria.Models.CustomValidationAttributes
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            int fieldValue = (int)value;
+            float fieldValue = (float)value;
 
             if (fieldValue < 19)
             {

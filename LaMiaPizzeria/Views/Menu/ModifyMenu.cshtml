@@ -31,8 +31,14 @@
                             <td>@pizza.Description</td>
                             <td>@pizza.Price.ToString("n2") €</td>
                             <td>
-                                <a class="btn btn-sm" href="@Url.Action("PizzaDetails", "Menu", new { id = pizza.Id })">
+                                <a class="btn btn-sm" href="@Url.Action("UpdatePizza", "Menu", new { id = pizza.Id })">
                                     <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24"  classe="no-decorations" alt="" /> 
+                                </a>
+                                <a class="btn btn-sm" href="@Url.Action("Delete", "Menu", new { id = pizza.Id })">
+                                    <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24" classe="no-decorations" alt="" />
+                                </a>
+                                <a class="btn btn-sm" href="@Url.Action("Read", "Menu", new { id = pizza.Id })">
+                                    <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24" classe="no-decorations" alt="" />
                                 </a>
                             </td>
                         </tr>
