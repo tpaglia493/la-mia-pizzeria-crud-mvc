@@ -23,6 +23,10 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        public IActionResult Contacts()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
