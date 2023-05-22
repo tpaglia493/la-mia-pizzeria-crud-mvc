@@ -97,7 +97,7 @@ namespace LaMiaPizzeria.Controllers
                 {
                     db.Remove(pizzaToDelete);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ModifyMenu");
                 }
                 else
                 { return NotFound("Non esiste una pizza da eliminare con questo id"); }

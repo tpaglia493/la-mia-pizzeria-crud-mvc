@@ -34,7 +34,7 @@
                                 <a class="btn btn-sm" href="@Url.Action("UpdatePizza", "Menu", new { id = pizza.Id })">
                                     <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24"  classe="no-decorations" alt="" /> 
                                 </a>
-                             <form asp-controller="Menù" asp-action="DeletePizza" asp-route-id="@pizza.Id" method="post" class="d-inline">
+                             <form asp-controller="Menu" asp-action="DeletePizza" asp-route-id="@pizza.Id" method="post" class="d-inline">
                                     @Html.AntiForgeryToken()
                                 <button type="submit" class="btn btn-danger btn-sm">
                                         <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24" classe="no-decorations" alt="" />
