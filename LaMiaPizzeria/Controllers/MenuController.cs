@@ -1,5 +1,6 @@
 ﻿using LaMiaPizzeria.DataBase;
 using LaMiaPizzeria.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LaMiaPizzeria.Controllers
@@ -14,7 +15,7 @@ namespace LaMiaPizzeria.Controllers
                 return View(pizze);
             }
         }
-
+        [Authorize(Roles = "ADMIN")]
         public IActionResult ModifyMenu()
         {
             using (PizzaContext db = new())
@@ -24,11 +25,12 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         public IActionResult AddNewPizza()
         {
             return View();
         }
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PizzaModel newPizza)
@@ -47,7 +49,7 @@ namespace LaMiaPizzeria.Controllers
             }
 
         }
-
+        [Authorize(Roles = "ADMIN")]
         public IActionResult UpdatePizza(int id)
         {
 
@@ -60,6 +62,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(PizzaModel modifiedPizza, int id)
@@ -85,7 +88,7 @@ namespace LaMiaPizzeria.Controllers
             }
 
         }
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePizza(int id)
