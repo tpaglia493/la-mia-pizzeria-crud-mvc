@@ -1,5 +1,6 @@
 ﻿using LaMiaPizzeria.DataBase;
 using LaMiaPizzeria.Models;
+using LaMiaPizzeria.Models.ModelForViews;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,31 +25,48 @@ namespace LaMiaPizzeria.Controllers
                 return View(pizze);
             }
         }
-
+        //AGGIUNGERE UNA PIZZA
         [Authorize(Roles = "ADMIN")]
         public IActionResult AddNewPizza()
         {
-            return View();
+
+            using (PizzaContext db = new())
+            {
+                List<PizzaCategory> pizzaCategories = db.pizzaCategories.ToList();
+
+                PizzaModelPizzaCategory modelForView = new();
+                modelForView.Pizza = new PizzaModel();
+                modelForView.PizzaCategories = pizzaCategories;
+
+                return View("AddNewPizza", modelForView);
+            }
         }
+
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(PizzaModel newPizza)
+        public IActionResult Create(PizzaModelPizzaCategory data)
         {
             if (!ModelState.IsValid)
             {
-                return View("AddNewPizza", newPizza);
+                using (PizzaContext db = new())
+                {
+                    List<PizzaCategory> pizzaCategories = db.pizzaCategories.ToList();
+                    data.PizzaCategories = pizzaCategories;
+                    return View("AddNewPizza", data);
+                }
             }
 
             using (PizzaContext db = new PizzaContext())
             {
-                db.Pizze.Add(newPizza);
+                db.Pizze.Add(data.Pizza);
                 db.SaveChanges();
 
                 return RedirectToAction("ModifyMenu");
             }
 
         }
+        //MODIFICARE UNA PIZZA
         [Authorize(Roles = "ADMIN")]
         public IActionResult UpdatePizza(int id)
         {
@@ -88,6 +106,7 @@ namespace LaMiaPizzeria.Controllers
             }
 
         }
+        //CANCELLARE UNA PIZZA
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]

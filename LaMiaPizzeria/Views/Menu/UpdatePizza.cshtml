@@ -25,6 +25,11 @@
             <input asp-for="Price" type="text" class="form-control" required>
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
+        <div class="mb-3">
+            <label asp-for="pizzaCategoryId" class="form-label">Prezzo:</label>
+            <input asp-for="pizzaCategoryId" type="text" class="form-control" required>
+            <span asp-validation-for="pizzaCategoryId" class="text-danger"></span>
+        </div>
         <button type="submit" class="btn btn-primary">Salva</button>
     </form>
 </div>

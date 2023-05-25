@@ -15,6 +15,7 @@
                         <th scope="col">id</th>
                         <th scope="col">Immagine</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">ID Categoria</th>
                         <th scope="col">Descrizione</th>
                         <th scope="col">Prezzo</th>
                         <th scope="col">Azioni</th>
@@ -28,6 +29,7 @@
                             <th scope="row">@pizza.Id</th>
                             <td><img class="img-fluid img_square" width="100" height="100" src="@pizza.ImgSource" alt="Immagine @pizza.Name"></td>
                             <td>@pizza.Name</td>
+                            <td>@pizza.pizzaCategoryId</td>
                             <td>@pizza.Description</td>
                             <td>@pizza.Price.ToString("n2") €</td>
                             <td>
