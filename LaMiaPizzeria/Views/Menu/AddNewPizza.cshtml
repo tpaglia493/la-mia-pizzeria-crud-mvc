@@ -6,7 +6,7 @@
 
 <div class="container">
     <form asp-controller="Menu" asp-action="Create" method="post">
-        @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken() 
         <div class="mb-3">
             <label asp-for="Pizza.Name" class="form-label">Nome:</label>
             <input asp-for="Pizza.Name" type="text" class="form-control" required>

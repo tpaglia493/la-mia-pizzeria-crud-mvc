@@ -70,40 +70,54 @@ namespace LaMiaPizzeria.Controllers
         [Authorize(Roles = "ADMIN")]
         public IActionResult UpdatePizza(int id)
         {
-
-            using (PizzaContext db = new PizzaContext())
+            using (PizzaContext db = new())
             {
+                List<PizzaCategory> pizzaCategories = db.pizzaCategories.ToList();
 
+                PizzaModelPizzaCategory modelForView = new();
+                modelForView.Pizza = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+                modelForView.PizzaCategories = pizzaCategories;
 
-                PizzaModel? pizzaToModify = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
-                return View("UpdatePizza", pizzaToModify);
+                return View("UpdatePizza", modelForView);
             }
+
         }
 
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(PizzaModel modifiedPizza, int id)
+        public IActionResult Update(PizzaModelPizzaCategory data, int id)
         {
             if (!ModelState.IsValid)
             {
-                return View("UpdatePizza", modifiedPizza);
+                using (PizzaContext db = new())
+                {
+                    List<PizzaCategory> pizzaCategories = db.pizzaCategories.ToList();
+                    data.PizzaCategories = pizzaCategories;
+                    return View("UpdatePizza", data);
+                }
             }
 
             using (PizzaContext db = new PizzaContext())
             {
                 PizzaModel? pizzaToModify = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+                if (pizzaToModify == null) { return NotFound("Nessuna pizza trovata"); }
+                else
+                {
 
-                pizzaToModify.Description = modifiedPizza.Description;
-                pizzaToModify.Price = modifiedPizza.Price;
-                pizzaToModify.ImgSource = modifiedPizza.ImgSource;
-                pizzaToModify.Name = modifiedPizza.Name;
+                    pizzaToModify.Description = data.Pizza.Description;
+                    pizzaToModify.Price = data.Pizza.Price;
+                    pizzaToModify.ImgSource = data.Pizza.ImgSource;
+                    pizzaToModify.Name = data.Pizza.Name;
+                    pizzaToModify.pizzaCategoryId = data.Pizza.pizzaCategoryId;
 
-                db.SaveChanges();
+                    db.SaveChanges();
 
 
-                return RedirectToAction("ModifyMenu");
+                    return RedirectToAction("ModifyMenu");
+                }
             }
+
 
         }
         //CANCELLARE UNA PIZZA
