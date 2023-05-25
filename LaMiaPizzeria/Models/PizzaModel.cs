@@ -1,7 +1,6 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using LaMiaPizzeria.Models.CustomValidationAttributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace LaMiaPizzeria.Models
 
@@ -11,8 +10,8 @@ namespace LaMiaPizzeria.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Questo campo è obbligatorio!")]
-        [StringLength(25, ErrorMessage ="Il nome non può essere più lungo di 25 caratteri!")]
+        [Required(ErrorMessage = "Questo campo è obbligatorio!")]
+        [StringLength(25, ErrorMessage = "Il nome non può essere più lungo di 25 caratteri!")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Questo campo è obbligatorio!")]
@@ -30,14 +29,17 @@ namespace LaMiaPizzeria.Models
         [NoPriceForPoors]
         public float Price { get; set; }
 
+        public int? pizzaCategoryId { get; set; }
+        public PizzaCategory? Category { get; set; }
+
         public PizzaModel() { }
 
-        public PizzaModel(string name, string description, string imgSource, float price) 
-        { 
-            Name = name; 
-            Description = description; 
-            ImgSource = imgSource; 
-            Price = price; 
+        public PizzaModel(string name, string description, string imgSource, float price)
+        {
+            Name = name;
+            Description = description;
+            ImgSource = imgSource;
+            Price = price;
         }
     }
 }
