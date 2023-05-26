@@ -34,7 +34,7 @@ namespace LaMiaPizzeria.Controllers
             {
                 List<PizzaCategory> pizzaCategories = db.pizzaCategories.ToList();
 
-                PizzaModelPizzaCategory modelForView = new();
+                PizzaModel_ListPizzaCategory modelForView = new();
                 modelForView.Pizza = new PizzaModel();
                 modelForView.PizzaCategories = pizzaCategories;
 
@@ -45,7 +45,7 @@ namespace LaMiaPizzeria.Controllers
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(PizzaModelPizzaCategory data)
+        public IActionResult Create(PizzaModel_ListPizzaCategory data)
         {
             if (!ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace LaMiaPizzeria.Controllers
             {
                 List<PizzaCategory> pizzaCategories = db.pizzaCategories.ToList();
 
-                PizzaModelPizzaCategory modelForView = new();
+                PizzaModel_ListPizzaCategory modelForView = new();
                 modelForView.Pizza = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
                 modelForView.PizzaCategories = pizzaCategories;
 
@@ -86,7 +86,7 @@ namespace LaMiaPizzeria.Controllers
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(PizzaModelPizzaCategory data, int id)
+        public IActionResult Update(PizzaModel_ListPizzaCategory data, int id)
         {
             if (!ModelState.IsValid)
             {

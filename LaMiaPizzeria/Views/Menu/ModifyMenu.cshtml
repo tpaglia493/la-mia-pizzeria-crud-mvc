@@ -34,13 +34,17 @@
                             <td>@pizza.Price.ToString("n2") €</td>
                             <td>
                                 <a class="btn btn-sm" href="@Url.Action("UpdatePizza", "Menu", new { id = pizza.Id })">
-                                    <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24"  classe="no-decorations" alt="" /> 
+                                    <span class="material-icons-outlined">
+                                        edit
+                                    </span>
                                 </a>
                              <form asp-controller="Menu" asp-action="DeletePizza" asp-route-id="@pizza.Id" method="post" class="d-inline">
                                     @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                        <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24" classe="no-decorations" alt="" />
-                                </button>
+                                    <button type="submit" class="btn btn-sm">
+                                        <span class="material-icons-outlined">
+                                            delete
+                                        </span>
+                                    </button>
                             </form>
                                 
                             </td>
@@ -57,10 +61,11 @@
                         <td class="align-middle"> Aggiungi una Pizza</td>
                         <td></td>
                         <td></td>
+                        <td></td>
                         <td>
-                            <a class="btn btn-sm" href="" style="pointer-events: none;">
-                                <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24" alt="" />
-                            </a>
+                            <span class="material-icons-outlined">
+                                edit
+                            </span>
                         </td></td>
                         </tr>
                 </tbody>
