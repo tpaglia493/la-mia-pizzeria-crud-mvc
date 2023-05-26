@@ -1,4 +1,5 @@
-﻿@model List<PizzaModel>
+﻿@using LaMiaPizzeria.Models.ModelForViews
+@model List<PizzaModel_ListPizzaCategory>
 
 <div class="container mt-5">
     <div class="row">
@@ -15,32 +16,32 @@
                         <th scope="col">id</th>
                         <th scope="col">Immagine</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">ID Categoria</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Descrizione</th>
                         <th scope="col">Prezzo</th>
                         <th scope="col">Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (PizzaModel pizza in Model)
+                    @foreach (PizzaModel_ListPizzaCategory dataModel in Model)
                     {
                       
                         <tr>
-                            <th scope="row">@pizza.Id</th>
-                            <td><img class="img-fluid img_square" width="100" height="100" src="@pizza.ImgSource" alt="Immagine @pizza.Name"></td>
-                            <td>@pizza.Name</td>
-                            <td>@pizza.pizzaCategoryId</td>
-                            <td>@pizza.Description</td>
-                            <td>@pizza.Price.ToString("n2") €</td>
+                            <th scope="row">@dataModel.Pizza.Id</th>
+                            <td><img class="img-fluid img_square" width="100" height="100" src="@dataModel.Pizza.ImgSource" alt="Immagine @dataModel.Pizza.Name"></td>
+                            <td>@dataModel.Pizza.Name</td>
+                            <td>@dataModel.Pizza.Category.Name</td>
+                            <td>@dataModel.Pizza.Description</td>
+                            <td>@dataModel.Pizza.Price.ToString("n2") €</td>
                             <td>
-                                <a class="btn btn-sm" href="@Url.Action("UpdatePizza", "Menu", new { id = pizza.Id })">
+                                <a class="btn btn-sm" href="@Url.Action("UpdatePizza", "Menu", new { id = dataModel.Pizza.Id })">
                                     <span class="material-icons-outlined">
                                         edit
                                     </span>
                                 </a>
-                             <form asp-controller="Menu" asp-action="DeletePizza" asp-route-id="@pizza.Id" method="post" class="d-inline">
+                                <form asp-controller="Menu" asp-action="DeletePizza" asp-route-id="@dataModel.Pizza.Id" method="post" class="d-inline">
                                     @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-sm">
+                                    <button type="submit" class="btn btn-sm ">
                                         <span class="material-icons-outlined">
                                             delete
                                         </span>
@@ -62,12 +63,9 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <span class="material-icons-outlined">
-                                edit
-                            </span>
-                        </td></td>
-                        </tr>
+                        <td></td>
+                        
+                    </tr>
                 </tbody>
             </table>
             

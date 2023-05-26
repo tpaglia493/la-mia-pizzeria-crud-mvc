@@ -21,8 +21,18 @@ namespace LaMiaPizzeria.Controllers
         {
             using (PizzaContext db = new())
             {
-                List<PizzaModel> pizze = db.Pizze.ToList();
-                return View(pizze);
+                List<PizzaCategory> pizzaCategories = db.pizzaCategories.ToList();
+                List<PizzaModel_ListPizzaCategory> listOfModels = new();
+                foreach (PizzaModel pizza in db.Pizze)
+                {
+                    PizzaModel_ListPizzaCategory modelForView = new();
+                    modelForView.Pizza = pizza;
+                    modelForView.PizzaCategories = pizzaCategories;
+                    listOfModels.Add(modelForView);
+
+                }
+
+                return View("ModifyMenu", listOfModels);
             }
         }
         //AGGIUNGERE UNA PIZZA
