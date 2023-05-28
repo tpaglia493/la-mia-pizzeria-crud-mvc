@@ -21,6 +21,7 @@ namespace LaMiaPizzeria.Controllers
         {
             using (PizzaContext db = new())
             {
+                //TODO: REFACTORING USANDO .include()
                 List<PizzaCategory> pizzaCategories = db.pizzaCategories.ToList();
                 List<PizzaModel_ListPizzaCategory> listOfModels = new();
                 foreach (PizzaModel pizza in db.Pizze)

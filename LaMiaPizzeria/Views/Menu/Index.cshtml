@@ -1,17 +1,62 @@
 ﻿@model List<PizzaModel>
-<div class="row">
+@{
+    List<PizzaModel> leRosse = Model.Where(pizza => pizza.pizzaCategoryId == 2).ToList();
+    List<PizzaModel> leBianche = Model.Where(pizza => pizza.pizzaCategoryId == 1).ToList();
+    List<PizzaModel> leRicche = Model.Where(pizza => pizza.pizzaCategoryId == 3).ToList();
+}
 
-@foreach (PizzaModel pizza in Model)
-{
-    <div class="col-12 col-md-6 col-lg-4">
-        <div class="card m-3 bg-elegant text-contrast">
-            <img src="@pizza.ImgSource" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div><h4>@pizza.Name</h4></div>
-                <div>@pizza.Description</div>
-                <div class="card-footer fs-4">@pizza.Price.ToString("n2") €</div>
+<div class="row">
+    <h2>Le Rosse</h2>
+    @foreach (PizzaModel pizza in leRosse)
+    {
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card m-3 bg-elegant text-contrast">
+                <img src="@pizza.ImgSource" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div><h4>@pizza.Name</h4></div>
+                    <div>@pizza.Description</div>
+                    <div class="card-footer fs-4">@pizza.Price.ToString("n2") €</div>
+                </div>
             </div>
         </div>
-    </div>
     }
 </div>
+<div class="row">
+    <h2>Le Bianche</h2>
+    @foreach (PizzaModel pizza in leBianche)
+    {
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card m-3 bg-elegant text-contrast">
+                <img src="@pizza.ImgSource" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div><h4>@pizza.Name</h4></div>
+                    <div>@pizza.Description</div>
+                    <div class="card-footer fs-4">@pizza.Price.ToString("n2") €</div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="row">
+    <h2>Le Ricche</h2>
+    @foreach (PizzaModel pizza in leRicche)
+    {
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card m-3 bg-elegant text-contrast">
+                <img src="@pizza.ImgSource" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div><h4>@pizza.Name</h4></div>
+                    <div>@pizza.Description</div>
+                    <div class="card-footer fs-4">@pizza.Price.ToString("n2") €</div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+
+
+
