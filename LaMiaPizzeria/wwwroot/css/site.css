@@ -5,34 +5,62 @@
 }
 
 
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48
-}
 
 .bg-none{
     background-color: none;
 }
 
 .bg-elegant {
-    background-color: #790000;
+    background-color: #8c1f1e;
 }
 
 .bg-contrast {
-    background-color: #FFF3DD;
+    background-color: #F4ECCC;
 }
 
 .bg-black {
-    background-color: black;
+    background-color: #0D0D0D;
 }
 
 .text-contrast {
-    color: #FFF3DD;
+    color: #F4ECCC;
 }
 
 .bg-whitey {
     background-color: #FFF9F4;
 }
 
-.red-hover:hover{
-    color:darkred;
+.text-elegant {
+    color: #8c1f1e;
+}
+
+.text-white {
+    color: white;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+span.size-48 {
+    font-size: 48px;
+}
+
+a:hover h1{
+    color: #F4ECCC !important;
+}
+
+.bg-crowns{
+    background-image:url(../img/CoroneBackground.jpg);
+    background-size: cover;
+    
+}
+
+.bg-rich{
+    background-image:url(../img/richBG.jpg);
+      background-size: cover;
+}
+
+.details-panel{
+    width:50%;
 }
